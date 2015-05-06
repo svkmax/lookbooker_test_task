@@ -38,4 +38,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  #for testing mail purpose
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.raise_delivery_errors = true
+  Net::SMTP
+  PUBLIC_URL = "http://localhost:3000/"
 end

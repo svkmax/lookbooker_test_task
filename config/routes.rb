@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :activities, only: [:index]
+  resources :events, only: [:create, :new, :index, :show, :get_ics_file] do
+    member do
+      get 'get_ics_file'
+    end
+  end
+
+  # resources :events do
+  #   member do
+  #     get 'get_ics_file'
+  #   end
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +65,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root :controller => 'events', :action => :new
 end

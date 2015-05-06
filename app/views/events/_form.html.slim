@@ -1,0 +1,17 @@
+.conteiner
+  = bootstrap_form_for @event, label_errors: true do |f|
+
+    .form-group
+      = f.text_field :title
+    .form-group
+      = f.text_area :description
+    .form-group
+      = f.datetime_select :start_time, class: "inline-block"
+    .form-group
+      = f.text_field :duration
+    .form-group
+      = f.collection_select :timezone, Event.get_timezones, :to_s, :to_s
+    .form-group
+      = f.email_field :email
+    .actions
+      = f.submit
