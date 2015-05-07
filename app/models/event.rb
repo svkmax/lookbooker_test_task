@@ -25,7 +25,7 @@ class Event < ActiveRecord::Base
   # of course in more complex application it should be separate table with the list of supported timezones
   #
   def self.get_timezones
-    ["UTC", "BST", "CET"]
+    ["UTC", "Europe/Paris", "CET"]
   end
 
   def generate_ics
