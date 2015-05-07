@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
 
   require 'icalendar/tzinfo'
 
+  default_scope { order('created_at') }
+
   def validate_email
     unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
       errors.add(:email, " field value is not looked like email")

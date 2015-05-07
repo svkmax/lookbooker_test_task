@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :activities, only: [:index]
   resources :events, only: [:create, :new, :index, :show, :get_ics_file] do
     member do
       get 'get_ics_file'
