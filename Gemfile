@@ -46,6 +46,5 @@ group :test do
   gem 'database_cleaner', require: false
 end
 
-gem 'slim'
 gem 'slim-rails'
 gem 'icalendar'

@@ -1,26 +1,25 @@
-p#notice = notice
 h3 Event details
-.conteiner
-  = label :event, :title,"Title: " + @event.title
-  br
-  = label :event, :start_date,"Start date: " + @event.start_time.strftime('%B %e at %l:%M %p')
-  br
-  - @event.duration > 1 ? hours_sting = " hours" : hours_sting = " hour"
-  = label :event, :duration,"Duration: " + @event.duration.to_s + hours_sting
-  br
-  = label :event, :description,"Description: "
-  br
-  = @event.description
-  br
-  = label :event, :timezone,"Timezone: " + @event.timezone
-  br
-  = label :event, :email,"Email: " + @event.email
-  br
-  = label :event, :history,"History: "
-  br
-  = @event.activities.map(&:result).join(' ') unless @event.activities.empty?
-  br
-  = label :event, :ics_file,"Link to: "
-  = link_to " Download ICS",  controller: "events", action: "get_ics_file", id: @event
-
+= label :event, :title, "Title: " + @event.title
+br
+= label :event, :start_date, "Start date: " + @event.start_time.strftime('%B %e at %l:%M %p')
+br
+= label :event, :duration, "Duration: #{@event.duration}" + " hour".pluralize(@event.duration)
+br
+= label :event, :description, "Description: "
+br
+= @event.description
+br
+= label :event, :timezone, "Timezone: " + @event.timezone
+br
+= label :event, :email, "Email: " + @event.email
+br
+= label :event, :history, "History: "
+br
+= "Event created at #{@event.created_at.strftime('%B %e at %l:%M %p')}"
+br
+= @event.activities.map(&:result).join(' ') unless @event.activities.empty?
+br
+= label :event, :ics_file, "Link to: "
+= link_to " Download ICS", controller: "events", action: "get_ics_file", id: @event
+br
 = link_to 'Back', events_path
